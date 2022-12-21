@@ -47,8 +47,8 @@ void loop() {
 		if (firstInLoop)
 		{
 			lcd.clear();
-      buttonPressed = false;
-      time = 0;
+      			buttonPressed = false;
+      			time = 0;
 			firstInLoop = false;
 		}
 
