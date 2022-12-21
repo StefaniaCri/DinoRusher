@@ -11,3 +11,9 @@ How to play:
 
 If the difficulty is medium or hard the matrix gonna light up for a while, so be carrefour of changes.
 
+# Setup
+![IMG_8675](https://user-images.githubusercontent.com/79380914/208952556-92fb8f32-445c-4fae-a19d-518010e51361.jpg)
+
+# Video
+https://youtu.be/kbEZfmY-I2I
+https://youtu.be/85S9rdutb0Y
