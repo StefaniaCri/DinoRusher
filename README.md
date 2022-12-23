@@ -16,5 +16,6 @@ If the difficulty is medium or hard the matrix gonna light up for a while, so be
 
 # Video
 [Game](https://youtu.be/kbEZfmY-I2I ) <br/>
-[Menu](https://youtu.be/85S9rdutb0Y )
+[Menu](https://youtu.be/85S9rdutb0Y ) <br/>
+[Video after fixing bugs :bug:](https://youtu.be/D1XBLd1Hkj4)
 
