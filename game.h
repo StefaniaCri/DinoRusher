@@ -154,9 +154,43 @@ void generateObstacle()
   chooseNewObstacle();
 }
 
+
+int dificultyGeneratingObstacleTime()
+{
+  if(settings.difficulty == 4)
+    return 150;
+  if(settings.difficulty ==  8){
+    if(time <= 250)
+      return 170;
+    if(time >= 250 && time <= 500)
+      return 150;
+    if(time >= 500 && time <= 750)
+      return 125;
+    if(time > 750)
+      return 100;        
+  }
+  if(settings.difficulty ==  12){
+    if(time <= 150)
+      return 200;
+    if(time >= 150 && time <= 300)
+      return 170;
+    if(time >= 300 && time <= 500)
+      return 150;
+    if(time >= 500 && time <= 650)
+      return 125;
+    if(time >= 650 && time <= 800)
+      return 100;
+    if(time >= 650 && time <= 800)
+      return 90;
+    if(time > 1000)
+      return 80;    
+  }
+}
+unsigned long delayTillNextObstacle = 0;
+int delayed = 150;
 void moveObstacle()
 {
-  if(millis() - lastDelayObstacle > delayObstacle && shownObstacle)
+  if(millis() - lastDelayObstacle > delayed && shownObstacle)
   {
     for(int i = 0; i<chosedLength; i++)
     {
@@ -166,7 +200,7 @@ void moveObstacle()
     {
       chooseObstacle[i].Y += 1; 
     }
-   if(chooseObstacle[chosedLength - 1].Y  > matrixSize)
+   if(chooseObstacle[0].Y  > matrixSize)
     {
       shownObstacle = false;
       return;
@@ -175,6 +209,7 @@ void moveObstacle()
     {
       matrix[chooseObstacle[i].X][chooseObstacle[i].Y] = 1;  
     }
+    delayed = dificultyGeneratingObstacleTime();
     lastDelayObstacle = millis();  
   }
 }
@@ -241,46 +276,9 @@ void updatePositions()
     updateMatrix();
   }
 }
-int dificultyGeneratingObstacleTime()
-{
-  if(settings.difficulty == 4)
-    return 1000;
-  if(settings.difficulty ==  8){
-    if(time <= 250)
-      return 1000;
-    if(time >= 250 && time <= 500)
-      return 750;
-    if(time >= 500 && time <= 750)
-      return 500;
-    if(time > 750)
-      return 250;        
-  }
-  if(settings.difficulty ==  12){
-    if(time <= 150)
-      return 1000;
-    if(time >= 150 && time <= 300)
-      return 800;
-    if(time >= 300 && time <= 500)
-      return 600;
-    if(time >= 500 && time <= 650)
-      return 400;
-    if(time >= 650 && time <= 800)
-      return 200;
-    if(time >= 650 && time <= 800)
-      return 150;
-    if(time > 1000)
-      return 100;    
-  }
-}
-unsigned long delayTillNextObstacle = 0;
-int delayed = 1000;
+
 void game() {
-  if(millis() - delayTillNextObstacle > delayed)
-  {
-	  generateObstacle();
-    delayTillNextObstacle = millis();
-    delayed = dificultyGeneratingObstacleTime();
-  }
+  generateObstacle();
   moveObstacle();
   if (millis() - lastMoved > moveInterval)
 	{
